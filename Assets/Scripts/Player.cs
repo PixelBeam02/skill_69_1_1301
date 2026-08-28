@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private InputAction moveAction;
     private Vector2 moveValue;
 
+    [SerializeField]
     private int point;
     public int Point {  get { return point; } set { point = value; } }
 
@@ -30,10 +31,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        MoveLeftOrRight();
     }
 
-    private void MoveLeftorRight()
+    private void MoveLeftOrRight()
     {
         moveValue = moveAction.ReadValue<Vector2>();
         rb.AddForce(moveValue.x * Vector3.right * forcePower);
