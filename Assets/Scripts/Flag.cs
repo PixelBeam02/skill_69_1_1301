@@ -1,16 +1,17 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Flag : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
+        Player player = other.gameObject.GetComponent<Player>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (player == null)
+            return;
+
+        player.Point += 10;
+        UIManager.instance.ShowNotiText($"+10 Points\nPoints: {player.Point}");
+        Destroy(gameObject);
     }
 }
