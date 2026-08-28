@@ -26,16 +26,18 @@ public class Tree : MonoBehaviour
             return;
 
         player.HP -= 15;
-        UIManager.instance.ShowText($"Hurt! =15\nHP: {player.HP}");
+        UIManager.instance.ShowNotiText($"Hurt! =15\nHP: {player.HP}");
 
         if (player.HP <= 0)
         {
             player.HP = 0;
-            UIManager.instance.ShowText($"OH NO! YOU ARE DEAD!!!\nPoints: {player.Point}");
+            UIManager.instance.ShowNotiText($"OH NO! YOU ARE DEAD!!!\nPoints: {player.Point}");
+            Time.timeScale = 0f;
+            UIManager.instance.ShowHideRestartButton(true);
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        rd.material.color = new Color32(67, 48, 43, 255);
+        rd.material.color = new Color32(29, 63, 24, 255);
     }
 }
